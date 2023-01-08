@@ -6,31 +6,36 @@ def getProbability(name, teamName):
 
     return ((l+o)*(l+v)*(l+e)*(o+v)*(o+e)*(v+e))%100
 
-name = input()
-
-n = int(input())
-
-maxProbability = 0
-maxTeamName = ""
-
-for _ in range(0,n):
-    teamName = input()
-    nameCount = []
-
-    probability = getProbability(name, teamName)
-    
-    if maxTeamName == "":
-        maxTeamName = teamName
+def setMaxProbabilityTeam(probability, teamName):
+    global maxProbability
+    global maxTeamName
+    if probability > maxProbability:
         maxProbability = probability
+        maxTeamName = teamName
+    # if maxProbability is equal, get teamName in alphabetic order
+    elif probability == maxProbability and teamName<maxTeamName:
+        maxTeamName = teamName
 
-    # get max probability TeamName
-    if probability >= maxProbability:
-        # if maxProbability is equal, get teamName in alphabetic order
-        if probability == maxProbability:
-            if teamName<maxTeamName:
-                maxTeamName = teamName
-        else:
-            maxProbability = probability
+
+if __name__ == "__main__":
+    name = input()
+    n = int(input())
+    maxProbability = 0
+    maxTeamName = ""
+
+    for _ in range(0,n):
+        teamName = input()
+        nameCount = []
+
+        probability = getProbability(name, teamName)
+
+        # set init teamName
+        if maxTeamName == "":
             maxTeamName = teamName
+            maxProbability = probability
+            continue
 
-print(maxTeamName)
+        # get max probability TeamName
+        setMaxProbabilityTeam(probability, teamName)
+
+    print(maxTeamName)
