@@ -1,13 +1,20 @@
-if __name__ == "__main__":
-    n, m = list(map(int, input().split()))
+import sys
+input = sys.stdin.readline
 
-    # dummy가 내림차순이 아니면 나열 불가
-    for i in range(0, m):
-        input()     # 더미 안에 있는 책 수
-        dummy = list(map(int, input().split()))
-        if dummy != sorted(dummy, reverse=True):
-            print("No")
-            exit(0)
-    
-    print("Yes")
+def numbercheck() :
+    global study
+    for i in range(M) :
+        book = int(input())
+        number = list(map(int, input().split()))
+        for j in range(book - 1) :
+            if number[j] < number[j + 1] :
+                study = False
+                break
+        if not study :
+            break
+            
+N, M = map(int, input().split())
+study = True
 
+numbercheck()
+print('Yes' if study else 'No')
