@@ -6,16 +6,15 @@ if __name__ == "__main__":
 
     circleList = [i for i in range(1, n+1)]
     result = "<"
-    p = 0
-    while(len(circleList) != 0):
+    p = 0       # pointer
+    for _ in range(0, n-1):
         p += k - 1
-        while(p >= len(circleList)):
-            p -= len(circleList)
+        if (p >= len(circleList)):
+            p = p % len(circleList)
 
-
-        if(len(circleList) != 1):
-            result += str(circleList.pop(p))+", "
-        else:
-            result += str(circleList.pop(p))+">"
+        result += str(circleList.pop(p))+", "
+    
+    # last element
+    result += str(circleList.pop())+">"
 
     print(result)
