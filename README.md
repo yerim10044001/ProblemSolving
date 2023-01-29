@@ -1,2 +1,1 @@
-# BaekJoon
 Problem Solving
