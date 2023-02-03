@@ -18,6 +18,4 @@ if __name__ == "__main__":
 
     # print star
     for i in range(0, n):
-        for j in range(0, n):
-            print(starList[i][j], end = '')
-        print()
+        print(''.join(starList[i]))
