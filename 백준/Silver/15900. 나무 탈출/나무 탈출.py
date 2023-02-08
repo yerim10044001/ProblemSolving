@@ -4,12 +4,13 @@ input = sys.stdin.readline
 def DFS(startNode):
     global depthSum
     stack = [[startNode, 0]]
-
+    visited[startNode] = True
+    
     while stack:
         node = stack.pop()
         if len(tree[node[0]]) == 1:    # if node is leaf node
             depthSum += node[1]
-            
+
         for v in tree[node[0]]:
             if not visited[v]:
                 visited[v] = True
