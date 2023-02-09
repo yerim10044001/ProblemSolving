@@ -4,9 +4,9 @@ from queue import PriorityQueue
 
 def canDrink(s):
     drinkSum = 0
-    for capacity in capacityList:
-        if s > capacity[1]:     # 주량 한계보다 s가 클 때,
-            drinkSum += capacity[1]
+    for i in range(0,n):
+        if s > Rlist[i]:     # 주량 한계보다 s가 클 때,
+            drinkSum += Rlist[i]
         else:
             drinkSum += s
     
@@ -18,19 +18,19 @@ def canDrink(s):
 if __name__ == "__main__":
     n, t = map(int, input().split())
 
-    capacityList = []
-    LiSum, RiSum = 0, 0
-    left, right = 0, 0
+    Llist = []
+    Rlist = []
+
     for _ in range(0, n):
         Li, Ri = map(int, input().split()) 
-        capacityList.append([Li, Ri])
-        LiSum += Li
-        RiSum += Ri
-        right = max(right, Ri)
-        left = max(left, Li)
+        Llist.append(Li)
+        Rlist.append(Ri)
+
+    LSum, RSum = sum(Llist), sum(Rlist)
+    left, right = max(Llist),max(Rlist)
 
     # S에 관계없이 항상 불가능
-    if LiSum > t or RiSum < t:
+    if LSum > t or RSum < t:
         print(-1)
         exit(0)
 
