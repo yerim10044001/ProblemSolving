@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-from queue import PriorityQueue
 
 def canDrink(s):
     drinkSum = 0
@@ -26,15 +25,15 @@ if __name__ == "__main__":
         Llist.append(Li)
         Rlist.append(Ri)
 
-    LSum, RSum = sum(Llist), sum(Rlist)
-    left, right = max(Llist),max(Rlist)
-
     # S에 관계없이 항상 불가능
+    LSum, RSum = sum(Llist), sum(Rlist)
     if LSum > t or RSum < t:
         print(-1)
         exit(0)
-
+    
     # 이분탐색 시작
+    left, right = max(Llist),max(Rlist)
+
     answer = right + 1
     while left <= right:
         s = (left+right)//2
