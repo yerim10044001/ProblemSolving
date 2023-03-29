@@ -1,20 +1,17 @@
-import sys
+import sys, heapq
 input = sys.stdin.readline
-import heapq
 
 if __name__ == "__main__":
     n = int(input())
     classList = [ list(map(int, input().split())) for _ in range(n) ]
+    classList.sort()
 
-    classList.sort(key=lambda p: (p[0],p[1]))
-    heapQue = []
-    heapq.heappush(heapQue, classList.pop(0)[1])
+    heapQue = [0]
 
-    for i in range(n-1):
+    for start, end in classList:
         prevEnd = heapq.heappop(heapQue)
-        if classList[i][0] < prevEnd:
+        if start < prevEnd:
             heapq.heappush(heapQue, prevEnd)
-        heapq.heappush(heapQue,classList[i][1])
+        heapq.heappush(heapQue,end)
 
-    
     print(len(heapQue))
