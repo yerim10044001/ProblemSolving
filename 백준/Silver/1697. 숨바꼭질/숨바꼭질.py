@@ -1,22 +1,21 @@
 import sys
 from collections import deque
 input = sys.stdin.readline
+MAX = 100001
 
 def bfs(n, k):
-    q = deque()
-    q.append([n, 0])
-    visited = set()
-    visited.add(n)
+    q = deque([n])
+    visited = [0]*MAX
 
     while q:
-        x, t = q.popleft()
+        x = q.popleft()
 
-        if x == k: return t
+        if x == k: return visited[x]
 
         for i in [x+1, x-1, 2*x]:
-            if 0 <= i <= 100000 and i not in visited:
-                visited.add(i)
-                q.append([i, t+1])
+            if 0 <= i < MAX and visited[i] == 0:
+                visited[i] = visited[x]+1
+                q.append(i)
 
     return -1
 
