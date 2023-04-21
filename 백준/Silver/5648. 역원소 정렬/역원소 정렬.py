@@ -14,5 +14,4 @@ if __name__ == "__main__":
         intList.append(int(''.join(n)))
     
     intList.sort()
-    for num in intList:
-        print(num)
+    print(*intList, sep='\n')
