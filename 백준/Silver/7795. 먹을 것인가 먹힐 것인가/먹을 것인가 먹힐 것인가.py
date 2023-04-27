@@ -1,15 +1,7 @@
+import bisect
 import sys
 input = sys.stdin.readline
 
-def binarySearch(a, bList):
-    left, right = 0, len(bList)-1
-    while left <= right:
-        mid = (left+right)//2
-        if bList[mid] >= a:
-            right = mid-1
-        elif bList[mid] < a:
-            left = mid+1
-    return left
 
 if __name__ == "__main__":
     t = int(input())
@@ -20,10 +12,10 @@ if __name__ == "__main__":
         bList = list(map(int, input().split()))
         bList.sort()
         aCnt = 0
-        for a in aList:
-            i = binarySearch(a, bList)
-            aCnt += i
- 
+        
+        for i in aList:
+            aCnt += bisect.bisect_left(bList, i)
+        
         print(aCnt)
 
 
