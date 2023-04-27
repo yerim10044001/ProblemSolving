@@ -18,7 +18,6 @@ if __name__ == "__main__":
         a, b = map(int,input().split())
         aList = list(map(int, input().split()))
         bList = list(map(int, input().split()))
-        aList.sort()
         bList.sort()
         aCnt = 0
         for a in aList:
