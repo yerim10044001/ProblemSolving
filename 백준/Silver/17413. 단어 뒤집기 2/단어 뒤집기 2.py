@@ -3,30 +3,13 @@ input = sys.stdin.readline
 
 if __name__ == "__main__":
     s = input().rstrip()
-    
-    word = []
-    reverse = True
-    for i in s:
-        if i == '<':
-            if reverse:
-                word.reverse()
-            print(''.join(word), end = '')
-            word = ['<']
-            reverse = False
-        elif i == '>':
-            if reverse:
-                word.reverse()
-            print(''.join(word), end = '>')
-            word = []
-            reverse = True
-        elif i == ' ':
-            if reverse:
-                word.reverse()
-            print(''.join(word), end = ' ')
-            word = []
+    s = s.replace('<','!<').replace('>','>!').split('!')
+
+    answer = ''
+    for word in s:
+        if '<' in word:
+            answer += word
         else:
-            word.append(i)
-    
-    if reverse:
-        word.reverse()
-    print(''.join(word))
+            answer += ' '.join([k[::-1] for k in word.split(' ')])
+
+    print(answer)
