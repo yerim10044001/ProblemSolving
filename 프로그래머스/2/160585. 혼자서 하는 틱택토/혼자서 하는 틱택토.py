@@ -1,12 +1,7 @@
-def solution(board):
+def solution(board):    
     # 선공과 후공의 개수 비교
-    o_cnt, x_cnt = 0, 0
-    for i in range(3):
-        for j in range(3):
-            if board[i][j] == "O":
-                o_cnt += 1
-            elif board[i][j] == "X":
-                x_cnt += 1
+    o_cnt = sum(row.count('O') for row in board)
+    x_cnt = sum(row.count('X') for row in board)
     if o_cnt == x_cnt or o_cnt-x_cnt == 1:
         pass
     else:
