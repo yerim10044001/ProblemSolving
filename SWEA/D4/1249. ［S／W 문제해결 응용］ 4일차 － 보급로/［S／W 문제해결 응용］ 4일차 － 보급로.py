@@ -1,5 +1,5 @@
 from collections import deque
-def solve(maps, n):
+def solve(n):
     def bfs():
         visited = [[100000] * n for _ in range(n)]
         visited[0][0] = 0
@@ -23,5 +23,5 @@ if __name__ == '__main__':
     for c in range(1, t + 1):
         n = int(input())
         maps = [list(map(int, list(input()))) for _ in range(n)]
-        answer = solve(maps, n)
+        answer = solve(n)
         print(f'#{c} {answer}')
